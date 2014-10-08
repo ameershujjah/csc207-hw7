@@ -1,0 +1,102 @@
+@author Ameer Shujjah
+@author Camila Mateo Volkart
+
+Part E - Design Reflections
+
+/--------------------------------------------------------/
+Q. Comment on the differences in the relationships between BulkItem and BulkContainer on one hand, 
+and Package and ManyPackages on the other.
+- The major difference between the BulkItem/BulkContainer relationship and the Package/ManyPacakges relationship 
+is that BulkContainer extends the class BulkItem, so it inherits all the fields and methods of BulkItem. On the
+other hand, ManyPackages contains a field Package.
+
+---Advantages and Disadvantages of the BulkItem/BulkContainer approach.
+Adding more functionality to the BulkItem class automatically adds those methods to the BulkContainer class. 
+This could be undesirable if one does not want BulkItem to have an affect on the functionality of BulkContainer.
+Using the inheritance relationship means one can interchange a BulkItem class with a BulkContainer class as 
+inputs to other functions if needed.
+
+--- Advantages and Disadvantages of the Package/ManyPackages approach.
+Since Package and ManyPackages are not directly related, changing the Package class would not have a direct
+affect on the ManyPackages object.Thus as a user, one ought not be worried about the implementation of the Package
+object. However since ManyPackages does not inherit any methods from the Package class, if one wanted to reuse some
+methods from the Package class, one would have to write them again so there could potentially be some code redundancy. 
+Also because of this lack of direct relationship between Package and the ManyPacakages classes, such a relationship
+is more encapsulated than the BulkItem/BulkContainer approach.
+
+/--------------------------------------------------------/
+Q. Discuss the merits of the four common methods used to access the name field.
+
+---Directly accessing the name field of each class.
+This is the easiest of the four methods which makes it easy to follow. However it is not recommended as one 
+cannot access fields from classes present in different packages, also if the fields are set to private, one cannot
+access them. As a convention they should be private so as to prohibit the use from changing the core components of
+the class.
+
+---Using a getName() method.
+Using a getter is a common and desirable way of getting the name field. However it can be said that is requires
+extra coding compared to the first method and also one would need to change the interface to include the getName()
+method.
+
+---Having an equals(String name) method
+Such an approach could be helpful in some cases, for instance when one wants to remove an object by checking if
+they have the same names. Other than that it does not seem to be very useful. An overall equals method that checks
+all the fields of the class could be more desirable depending on what the purpose of the class is. Also having
+such a method implies that the two names need to be exactly the same. For instance if the name is Ameer Shujjah and
+the user wants to check if it equals Ameer, this function would return false even though Ameer and Ameer Shujjah
+refer to the same person. In such a case, option four is the most sensible option.
+
+---Using a hasName(String name) method
+This is the most desirable of the three options as it is more general than the previous equals(String name) method 
+and it reveals less than the getName() method so the data is better encapsulated. 
+
+/--------------------------------------------------------/
+Q. Consider the differences between Package and NonFood.
+Package and NonFood essentially have the same fields and methods however in our model they refer to different
+things. In our model it makes sense to separate them into different classes and one might want to do certain things
+to the Package class and not to the NonFood class. They could be merged into one class and we can add another field
+specifying if the item is a Food or a NonFood in the class that would enable us to perform the same tasks in a similar
+manner as the model we have now.For this model, this makes more sense as there could be certain functions that we 
+only want to carry out on NonFood related items or only Food related items so it makes sense separating them into
+separate classes. 
+
+/--------------------------------------------------------/
+Q. Comment on at least five different in our design and the design used in Professor Walker's class.
+---One of the major differences in the two implementations is that our design uses a separate Units class, so we
+can express any item in any units. In the other design the units are fixed for classes so there is less flexibility
+in terms of units.
+
+---Another major difference is the presence of the beverage class in the other design which again is a result of
+a lack of a Units Class. We can classify beverages as items in our structure since we can choose the units of the
+item we are creating.
+
+---The package class in the other design has fields for length, height and width. Hence you can specify the 
+dimensions of the package. This is a different way of looking at a Package by focusing on its physical appearance.
+In our design this feature is not needed as we are classifying packages by weight. We have an additional Weight 
+class that enables us to add a similar functionality but for all the items. 
+
+---There is no NonFood class in the other implementation which is limiting as apart from food and beverages, one
+should also be able to put other items in a cart and have methods distinct for those items.
+
+---One of the key differences is the use of doubles as opposed to int in the two implementations. The advantage
+of using int's is that it requires less space and since the int's correspond to cents, there is never a rounding
+off that takes place. A possibly disadvantage could be the Max_Int which is much smaller than the double_int, but 
+in a realistic scenario, it is doubtful that it would ever be needed. Using doubles allows one to store decimal 
+points and larger numbers so once can also store the prices in dollars if needed. 
+
+---There are no ManyPackages or BulkContainer type classes in the other implementation, that implies that similar
+items are not merged into single items hence there is more storage being used the other implementation. 
+
+---The produce class in the other implementation has a category field that defines the category of the item. We 
+have a similar idea when we are using BulkItem and BulkFood, essentially we are also grouping similar items together.
+Our implementation is more useful as we can group similar items into BulkItem and BulkFood items.
+
+---The other implementation contains no equals methods which limits the capabilities of the model. Without an 
+equals method it is not possible to find and merge similar items if needed. 
+
+---The Beverages class in the other implementation has an additional field, containerDeposit which seems more useful
+as it presents a more realistic scenario. In our implementation we would have to add that to the price of the item. 
+Depending on whether we wanted to do something in the end with that containderDeposit field, we can decide which
+implementation to choose. 
+
+ 
