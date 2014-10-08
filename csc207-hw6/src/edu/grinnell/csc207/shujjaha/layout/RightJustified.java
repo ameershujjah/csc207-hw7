@@ -3,6 +3,7 @@ package edu.grinnell.csc207.shujjaha.layout;
 /**
  * Implements the RightJustified class that right justifies a TextBlock.
  * @author Ameer Shujjah
+ * @author Camila Mateo Volkart
  *
  */
 public class RightJustified
