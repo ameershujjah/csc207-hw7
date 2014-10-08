@@ -17,7 +17,7 @@ import edu.grinnell.glimmer.ushahidi.UshahidiWebClient;
 /**
  * Implements methods related to the Ushahidi data structure.
  * @author Ameer Shujjah
- * @author Camila Matoe Volkart
+ * @author Camila Mateo Volkart
  */
 public class UshahidiExtensions
 {
