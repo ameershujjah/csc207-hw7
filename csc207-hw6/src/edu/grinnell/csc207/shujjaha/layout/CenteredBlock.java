@@ -3,6 +3,7 @@ package edu.grinnell.csc207.shujjaha.layout;
 /**
  * Implements the CenteredBlock class that centers a Textblock with the given width.
  * @author Ameer Shujjah
+ * @author Camila Mateo Volkart
  *
  */
 public class CenteredBlock
