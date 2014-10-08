@@ -225,8 +225,8 @@ public class Cart
     // iterations.
     Item item1;
     Item item2;
-    // Get the length of the cart for each iteration as it's length could have changed
-    // once we delete an item
+    // Get the length of the cart for each iteration as its length changes when we
+    // delete items
     for (int i = 0; i < cart.size(); i++)
       {
         item1 = cart.get(i);
